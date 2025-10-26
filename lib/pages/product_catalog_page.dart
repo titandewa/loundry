@@ -6,6 +6,7 @@ import '../widgets/best_seller_card.dart';
 import '../widgets/promo_banner.dart';
 import '../widgets/recommend_card.dart';
 import '../widgets/bottom_nav.dart';
+import '../experiments/comparison_page.dart'; // ✅ Tambahkan impor untuk navigasi langsung
 
 class ProductCatalogPage extends StatefulWidget {
   const ProductCatalogPage({Key? key}) : super(key: key);
@@ -22,6 +23,26 @@ class _ProductCatalogPageState extends State<ProductCatalogPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'Katalog Laundry',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        backgroundColor: Colors.blue,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.compare_arrows_rounded),
+            tooltip: 'Buka Halaman Perbandingan',
+            onPressed: () {
+              // ✅ Navigasi ke ComparisonPage
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ComparisonPage()),
+              );
+            },
+          ),
+        ],
+      ),
       body: SafeArea(
         child: Column(
           children: [
@@ -47,9 +68,8 @@ class _ProductCatalogPageState extends State<ProductCatalogPage> {
                             isSelected: isSelected,
                             onTap: () {
                               setState(() {
-                                selectedCategoryIndex = isSelected
-                                    ? null
-                                    : index;
+                                selectedCategoryIndex =
+                                    isSelected ? null : index;
                               });
                             },
                           );
@@ -138,8 +158,8 @@ class _ProductCatalogPageState extends State<ProductCatalogPage> {
               int crossAxisCount = constraints.maxWidth < 400
                   ? 2
                   : constraints.maxWidth < 800
-                  ? 3
-                  : 4;
+                      ? 3
+                      : 4;
               return GridView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
@@ -158,7 +178,8 @@ class _ProductCatalogPageState extends State<ProductCatalogPage> {
                     isSelected: isSelected,
                     onTap: () {
                       setState(() {
-                        selectedRecommendIndex = isSelected ? null : index;
+                        selectedRecommendIndex =
+                            isSelected ? null : index;
                       });
                     },
                   );
