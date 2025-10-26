@@ -15,8 +15,9 @@ class PromoBanner extends StatelessWidget {
       child: Row(
         children: [
           const Icon(Icons.local_offer, color: Colors.blue, size: 28),
-          const SizedBox(width: 10),
+          const Spacer(flex: 1),
           Expanded(
+            flex: 8,
             child: Text(
               'Dapatkan potongan harga hingga 25% untuk layanan express minggu ini!',
               style: TextStyle(
