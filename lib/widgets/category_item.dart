@@ -30,7 +30,7 @@ class CategoryItem extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(category.icon, color: Colors.blue, size: 30),
+            Icon(category.icon, color: Colors.blue, size: 28),
             const SizedBox(height: 6),
             Text(
               category.name,
